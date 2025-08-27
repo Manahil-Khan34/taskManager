@@ -11,10 +11,10 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-// Middleware to handle CORS
+// Middleware to handle CORSprocess.env.CLIENT_URL || "*"
 app.use(
     cors({ 
-        origin: process.env.CLIENT_URL || "*" ,
+        origin: ["https://task-manager-ekhd.vercel.app"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
     })
