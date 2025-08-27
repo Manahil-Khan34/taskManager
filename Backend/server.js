@@ -13,12 +13,24 @@ const app = express();
 
 // Middleware to handle CORSprocess.env.CLIENT_URL || "*"
 app.use(
-    cors({ 
-        origin: ["https://task-manager-ekhd.vercel.app"],
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
+  cors({
+    origin: ["https://task-manager-ekhd.vercel.app"], // frontend domain
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // if you're sending cookies/tokens
+  })
 );
+
+// Handle preflight (very important)
+app.options("*", cors());
+
+// app.use(
+//     cors({ 
+//         origin: ["https://task-manager-ekhd.vercel.app"],
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//         allowedHeaders: ["Content-Type", "Authorization"],
+//     })
+// );
 
 
 
